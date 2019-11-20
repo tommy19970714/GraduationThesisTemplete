@@ -1,0 +1,56 @@
+% jnlpbbl.sty for NLP (The Association for Natural Language Processing)
+% Style option file For Japanese papers.
+% This calls nlpbbl.sty.
+
+% 13-Jan-95 by m_yama@pluto.ai.kyutech.ac.jp (renamed from theapa to nlpbbl)
+% 06-Nov-94 by nakamura@ai.kyutech.ac.jp
+
+% jtheapa.sty by Gunji (93.01.15) --- for use with jtheapa.bst 2.5.1
+\input{nlpbbl.sty}
+
+% addition and change of default
+\def\Bbf{\bf}  % for volume number (originally \Bem, i.e. \em)
+\NoCommaBetweenTwoAuthors
+
+% citation format for Japanese titles, editors, etc.
+% the following must be defined. Change them according to your taste.
+\def\Jem#1{#1} % book title
+\def\Jetal{他}     % replaces `et al.'
+\def\JBA{・}       % between authors
+\def\JBOQ{``}      % opening quote for article title
+\def\JBCQ{.''}     % closing quote for article title
+\def\JED{（編）}   % editor
+\def\JEDS{（編）}  % editors
+\def\JEd{版}       % edition
+\def\JCH{章}       % chapter
+\def\JTR{テクニカル・レポート}  % technical report
+\def\JVOL{巻}      % volume for book series
+\def\JNUM{号}      % number for book series
+
+% modification of thebibliography environment
+%  (参考)文献 is centerlined
+% nlp: center-> left (a_ishi)
+\def\@refhead{参考文献}
+% a_ishi \def\refname{\centerline{\@refhead}}
+\def\refname{\@refhead}
+\def\@bibhead{文献}
+\def\bibname{\centerline{\@bibhead}}
+\def\thebibliography#1{%
+     \@ifundefined{chapter}%
+       {\section*{\refname}%
+        \@mkboth{\@refhead}{\@refhead}
+        \addcontentsline{toc}{section}{\@refhead}}%
+       {\chapter*{\bibname}%
+        \@mkboth{\@bibhead}{\@bibhead}
+        \addcontentsline{toc}{chapter}{\@bibhead}}
+     \list
+     {\relax}{\labelsep=0em
+              \leftmargin=\bibleftmargin
+	      \itemindent=-\bibleftmargin}
+     \def\newblock{\hskip .11em plus .33em minus .07em}
+     \sloppy\clubpenalty4000\widowpenalty4000
+     \sfcode`\.=1000\relax}
+
+
+
+

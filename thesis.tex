@@ -1,0 +1,169 @@
+%
+%  論文
+%
+% (thesis.tex)
+%%%%% for NTT TeX
+\documentclass[a4j,12pt]{jreportTsukuba}
+\usepackage{ascmac, color}%網掛け
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{epsfig}
+\usepackage{rotating}
+\usepackage{lscape}
+\usepackage{fancyheadings}
+\usepackage[refpages]{gloss}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{slashbox}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsmath,amssymb}
+\usepackage{tabularx}
+\usepackage{here}
+\usepackage{comment}
+\usepackage{subfigure}
+\usepackage {threeparttable}
+
+\makegloss % for glossary
+\newcommand{\dg}{\gt}
+
+\renewcommand{\chaptermark}[1]{\markboth{第 \thechapter 章\ \ #1}{}}
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}} % \leftmark
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+%\pagestyle{plain}
+\makeatletter
+\def\Hline{%
+\noalign{\ifnum0=`}\fi\hrule \@height 2pt \futurelet
+\reserved@a\@xhline}
+\makeatother
+
+\pagestyle{fancyplain}
+
+
+
+%%%%% Option 1
+\lhead[\fancyplain{}{\sf\thepage}]{\fancyplain{}{\rightmark}}
+\rhead[\fancyplain{}{\bf\leftmark}]{\fancyplain{}{\sf\thepage}}
+\cfoot[\fancyplain{\sf\thepage}{}]{\fancyplain{\sf\thepage}{}}
+
+% for fancyheadings
+\setlength{\footrulewidth}{0.4pt}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+%%% various length to be set
+\headsep=0.5in
+\parindent=1em
+\topmargin = -0.54cm
+\addtolength{\footskip}{0.2in}
+\addtolength{\oddsidemargin}{-0.54cm}
+\addtolength{\evensidemargin}{-0.54cm}
+\addtolength{\textwidth}{1.08cm}
+\addtolength{\headwidth}{1.08cm}
+\topsep=0.1cm
+\parsep=0.1cm
+\itemsep=0.0cm
+\renewcommand{\baselinestretch}{1.1}
+
+%%% for Pen mark of Keio
+%\newfont{\kten}{kiis10}
+%\newcommand{\pen}{\kten p}
+%%% for production rule
+%\newcommand{\tate}{\,$\mid$\,} 
+\newcommand{\ra}{\,$\rightarrow$\,}
+\newcommand{\eps}{\,$\epsilon$\,}
+\newcommand{\lkaku}{\,$\langle$\,}
+\newcommand{\rkaku}{\,$\rangle$\,}
+\newcommand{\gen}{\,$::=$\,}
+\newcommand{\nonterm}[1]{\,$\langle$\,{\it #1}\,\,$\rangle$\,}
+\newcommand{\terminal}[1]{\,$\langle$\,{#1}\,\,$\rangle$\,}
+\newcommand{\bsl}{$\backslash$}
+%%% for table with multicolumn
+\newcommand{\lwr}[1]{\smash{\lower2.ex\hbox{#1}}}
+%%% nqoute environment
+\newenvironment{nquote}[1]%
+{\list{}{\leftmargin=#1}\item[]}%
+{\endlist}
+\newcommand{\namelistlabel}[1]{\mbox{#1}\hfil}
+\newenvironment{namelist}[1]{%
+\begin{list}{}
+  {\let\makelabel\namelistlabel
+  \settowidth{\labelwidth}{#1}
+  \setlength{\leftmargin}{1.1\labelwidth}}
+}{%
+\end{list}}
+%%% for using musictex & \cup in math environment
+% \cup is re-defined as crotchet in musictex (stupid!)
+% rename \cup -> \mcup (defined in musictex.tex)
+% redefine \cup as correct math symbol
+\renewcommand{\cup}{\mcup}
+\mathchardef\cup="225B
+
+%%% here we go!
+\begin{document}
+
+\begin{titlepage}
+\begin{huge}
+\begin{center}
+\vspace*{4cm}
+{\huge {\bf 論文タイトル}}%bf：太字
+\vspace{4cm}\\
+2019年3月
+\vspace{2cm}\\
+\begin{tabular}{c}
+学籍番号\\
+山田　太郎
+\end{tabular}
+\vspace{2cm}\\
+\begin{tabular}{c}
+大学学群\\
+学類
+\end{tabular}
+\end{center}
+\end{huge}
+\end{titlepage}
+
+%\newtheorem{th}{{\dg 定義}}[section]
+\renewcommand{\bibname}{参考文献}
+%\renewcommand{\abstractname}{梗 概} 
+%\renewcommand{\glossname}{用語集}
+
+%% Title
+%\maketitle
+%% table of contents, figures, tables
+\pagenumbering{roman}
+%\listoffigures
+%\listoftables
+%% the body
+\setlength{\baselineskip}{20pt}
+%\renewcommand{\baselinestretch}{1.2}
+%\pagenumbering{arabic}
+%\cleardoublepage   %空白ページ
+%\include{abstract}
+\tableofcontents
+\listoftables
+\listoffigures
+
+\cleardoublepage
+\pagenumbering{arabic}
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
+\include{acknwldg} % 謝辞
+\bibliographystyle{junsrt}
+%\addcontentsline{toc}{chapter}{参考文献}
+\bibliography{doc}
+%\printgloss{myglos}
+
+%% the appendix
+\appendix % 付録
+%\include{other/appndix1}
+%\cleardoublepage
+%\include{other/appndix2}
+%\cleardoublepage
+%\include{other/appndix3}
+%\include{other/biblgrph} % 発表論文
+\end{document}

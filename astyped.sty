@@ -1,0 +1,23 @@
+%%%%%%%%%%%%%%%%%%%%%% @(#)astyped.sty	1.3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% ASTYPED DOCUMENT-STYLE OPTION - released 88/06/30
+%    for LaTeX version 2.09
+% Based on Leslie Lamport's verbatim environment in latex.tex.
+
+% Defines the `astyped' environment, which is like the `verbatim'
+% environment except most of the special characters have their usual meanings.
+% Space, ^K, and ^A are the only specials changed.
+
+\def\astyped{\trivlist \item[]\if@minipage\else\vskip\parskip\fi
+\leftskip\@totalleftmargin\rightskip\z@
+\parindent\z@\parfillskip\@flushglue\parskip\z@
+\@tempswafalse \def\par{\if@tempswa\hbox{}\fi\@tempswatrue\@@par}
+\obeylines \tt \catcode``=13 \@noligs \let\do\@makeother \do\ \do\^^K\do\^^A
+ \frenchspacing\@vobeyspaces}
+
+\let\endastyped=\endtrivlist
+
+% Used inside astyped environments for normal formatting of a line.
+% I wish I could give space its normal catcode within \notastyped.
+\def\notastyped#1{\mbox{\rm #1}}
+
